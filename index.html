@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>do you know me?</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Enable dark mode */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1f2937; /* Gray-800 */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+    <div class="bg-gray-800 shadow-md rounded-lg p-6 max-w-md w-full">
+        <h1 class="text-2xl font-bold mb-4 text-center text-white">If You Know Me, Which Would I Choose?</h1>
+        
+        <form id="quizForm">
+            <div class="mb-4">
+                <label class="block text-gray-300 font-semibold mb-2">1. Favorite Food:</label>
+                <div class="flex flex-col">
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="food" value="Pizza" class="mr-2">
+                        Pizza
+                    </label>
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="food" value="Sushi" class="mr-2">
+                        Tomatoes
+                    </label>
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="food" value="Burgers" class="mr-2">
+                        Fish
+                    </label>
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="food" value="Pasta" class="mr-2">
+                        None of the above
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-300 font-semibold mb-2">2. Favorite Hobby:</label>
+                <div class="flex flex-col">
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="hobby" value="Reading" class="mr-2">
+                        Reading
+                    </label>
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="hobby" value="Hanging" class="mr-2">
+                        Fishing
+                    </label>
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="hobby" value="Gaming" class="mr-2">
+                        Gaming
+                    </label>
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="hobby" value="Prog" class="mr-2">
+                        None of the above
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-300 font-semibold mb-2">3. Favorite Person:</label>
+                <div class="flex flex-col">
+                    <label class="flex text-gray-300 items-center mb-2">
+                        <input type="radio" name="person" value="PJ" class="mr-2">
+                        Percy Jackson
+                    </label>
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="person" value="YOU" class="mr-2">
+                        YOU💙
+                    </label>
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="person" value="SC" class="mr-2">
+                        Sabrina Carpenter
+                    </label>
+                    <label class="flex items-center text-gray-300 mb-2">
+                        <input type="radio" name="person" value="Horror" class="mr-2">
+                        Horror
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-700 text-white font-semibold py-2 rounded hover:bg-blue-600 dark:hover:bg-blue-600 transition duration-200">Submit</button>
+        </form>
+
+        <div id="result" class="mt-4 text-center text-white hidden"></div>
+    </div>
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Define the correct answers
+            const correctAnswers = {
+                food: 'Pizza', // Change this to your actual favorite
+                hobby: 'Hanging', // Change this to your actual favorite
+                person: 'YOU' // Change this to your actual favorite
+            };
+
+            let score = 0;
+
+            // Check answers
+            const foodAnswer = document.querySelector('input[name="food"]:checked');
+            const hobbyAnswer = document.querySelector('input[name="hobby"]:checked');
+            const movieAnswer = document.querySelector('input[name="person"]:checked');
+
+            if (foodAnswer && foodAnswer.value === correctAnswers.food) {
+                score++;
+            }
+            if (hobbyAnswer && hobbyAnswer.value === correctAnswers.hobby) {
+                score++;
+            }
+            if (movieAnswer && movieAnswer.value === correctAnswers.person) {
+                score++;
+            }
+
+            // Display the result
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = `Your score is ${score} out of 3.`;
+            resultDiv.classList.remove('hidden');
+        });
+    </script>
